@@ -1,10 +1,12 @@
+import { RouterProvider } from 'react-router-dom';
 import './App.css'
+import RouterData from './routes';
 
 function App() {
-
+  const route = RouterData();
   return (
     <>
-      <h1>Born To Achieve Great Things!</h1>
+      <RouterProvider router={route} />
     </>
   )
 }
