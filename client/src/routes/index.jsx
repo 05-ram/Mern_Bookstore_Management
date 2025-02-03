@@ -30,5 +30,3 @@ const RouterData = () => {
     return strictRoute;
 }
 export default RouterData;
-
-//21.10
