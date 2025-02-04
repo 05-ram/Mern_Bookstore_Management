@@ -9,8 +9,11 @@ const NavbarComp = () => {
                 </Link>
             </Navbar.Brand>
             <div className="d-flex justify-content-between gap-3 navbar-right">
-                <NavLink to='/books' activeClassName="active">Books</NavLink>
-                <NavLink to='/login' activeClassName="active">Login</NavLink>
+                <NavLink to='/books' activeclassname="active">Books</NavLink>
+                <NavLink to='/addbook' activeclassname="active">Add Book</NavLink>
+                <NavLink to='/addstudent' activeclassname="active">Add Student</NavLink>
+                <NavLink to='/dashboard' activeclassname="active">Dashboard</NavLink>
+                <NavLink to='/login' activeclassname="active">Login</NavLink>
             </div>
         </Navbar>
     )

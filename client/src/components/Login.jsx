@@ -1,25 +1,40 @@
 import { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 const Login = () => {
-    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [role, setRole] = useState('student');
+    const [role, setRole] = useState('');
+    const navigate = useNavigate();
+
+    axios.defaults.withCredentials = true;
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('Submitted successfully')
+        axios.post("http://localhost:6003/auth/login", { username, password, role })
+            .then(res => {
+                if (res.data.login && role === 'admin') {
+                    navigate('/dashboard')
+                }
+                else {
+                    alert('Credentials Not correct')
+                }
+            }
+            )
+            .catch(err => console.log(err))
     }
     return (
         <div className="container login-page d-flex justify-content-center calc-height">
             <Form onSubmit={handleSubmit} style={{ width: "500px" }} className="mt-5">
                 <h3 className="text-center mb-3">Login</h3>
 
-                <Form.Group controlId="email" className='mb-3'>
-                    <Form.Label><b>Email</b></Form.Label>
-                    <Form.Control type="email" placeholder="Enter Email" name="email" id="email" onChange={(e) => setEmail(e.target.value)} />
+                <Form.Group className='mb-3'>
+                    <Form.Label><b>Username</b></Form.Label>
+                    <Form.Control type="text" placeholder="Enter username" name="username" id="username" onChange={(e) => setUsername(e.target.value)} />
                 </Form.Group>
 
-                <Form.Group controlId="psw" className='mb-3'>
+                <Form.Group className='mb-3'>
                     <Form.Label><b>Password</b></Form.Label>
                     <Form.Control type="password" placeholder="Enter Password" name="psw" id="psw" onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>

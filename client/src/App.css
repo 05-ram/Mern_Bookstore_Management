@@ -41,6 +41,10 @@ form {
   border-radius: 10px;
 }
 
+.form-select {
+  cursor: pointer;
+}
+
 
 
 
