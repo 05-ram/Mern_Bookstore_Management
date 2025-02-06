@@ -7,7 +7,6 @@ const loginUser = asyncHandler(async (req, res) => {
     const { username, password, role } = req.body;
     if (role === 'admin') {
         const admin = await Admin.findOne({ username });
-        console.log("admin details", admin)
         if (!admin) {
             return res.json({ message: "Admin Not Registered!", status: false })
         }

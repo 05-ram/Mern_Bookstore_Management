@@ -5,6 +5,7 @@ import Login from "../components/Login";
 import Books from "../components/Books";
 import Layout from "../components/Layout";
 import Dashboard from "../components/Dashboard";
+import AddStudent from "../components/AddStudent";
 
 const RouterData = () => {
     const strictRoute = createBrowserRouter([
@@ -20,6 +21,10 @@ const RouterData = () => {
                 {
                     path: '/dashboard',
                     element: <Dashboard />
+                },
+                {
+                    path: '/addstudent',
+                    element: <AddStudent />
                 },
                 {
                     path: '/login',
