@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
-import { Button, Form } from "react-bootstrap"
+import { Button, Form } from "react-bootstrap";
+import { useNavigate } from "react-router-dom"
 
 const AddStudent = () => {
     const [roll, setRoll] = useState('');
@@ -8,10 +9,18 @@ const AddStudent = () => {
     const [grade, setGrade] = useState('');
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate();
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:6003/auth', { roll, username, grade, password })
+        axios.post('http://localhost:6003/auth/register', { roll, username, grade, password })
+            .then(res => {
+                if (res.data.registered) {
+                    alert('Registered successfully')
+                    navigate('/dashboard')
+                }
+            })
     }
     return (
         <div className="container d-flex justify-content-center calc-height">
@@ -20,7 +29,7 @@ const AddStudent = () => {
 
                 <Form.Group className='mb-3'>
                     <Form.Label><b>Roll No</b></Form.Label>
-                    <Form.Control type="text" placeholder="Enter username" name="username" id="username" value={roll} onChange={(e) => setRoll(e.target.value)} />
+                    <Form.Control type="text" placeholder="Enter roll no" name="username" id="username" value={roll} onChange={(e) => setRoll(e.target.value)} />
                 </Form.Group>
                 <Form.Group className='mb-3'>
                     <Form.Label><b>Username</b></Form.Label>
@@ -28,7 +37,7 @@ const AddStudent = () => {
                 </Form.Group>
                 <Form.Group className='mb-3'>
                     <Form.Label><b>Grade</b></Form.Label>
-                    <Form.Control type="text" placeholder="Enter username" name="username" id="username" value={grade} onChange={(e) => setGrade(e.target.value)} />
+                    <Form.Control type="text" placeholder="Enter grade" name="username" id="username" value={grade} onChange={(e) => setGrade(e.target.value)} />
                 </Form.Group>
                 <Form.Group className='mb-3'>
                     <Form.Label><b>Password</b></Form.Label>

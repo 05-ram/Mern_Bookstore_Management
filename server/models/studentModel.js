@@ -21,5 +21,3 @@ const studentSchema = mongoose.Schema(
     }
 )
 module.exports = mongoose.model('Student', studentSchema)
-
-//1.09.00
