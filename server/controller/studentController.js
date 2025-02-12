@@ -4,6 +4,9 @@ const bcrypt = require('bcrypt');
 
 const studentRegister = asyncHandler(async (req, res) => {
     const { username, roll, password, grade } = req.body
+    if (!username || !roll || !password || !grade) {
+        return res.json({ message: "All fields are mandatory!" })
+    }
     const student = await Student.findOne({ username })
     if (student) {
         return res.json({ message: "Student is Already Registered" })

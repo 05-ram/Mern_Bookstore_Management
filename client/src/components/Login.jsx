@@ -17,8 +17,8 @@ const Login = () => {
                 if (res.data.login && role === 'admin') {
                     navigate('/dashboard')
                 }
-                else {
-                    alert('Credentials Not correct')
+                else if (res.data.login && role === 'student') {
+                    navigate('/')
                 }
             }
             )

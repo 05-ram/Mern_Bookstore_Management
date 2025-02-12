@@ -11,7 +11,7 @@ const AddStudent = () => {
 
     const navigate = useNavigate();
 
-
+    axios.defaults.withCredentials = true;
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.post('http://localhost:6003/auth/register', { roll, username, grade, password })
@@ -20,12 +20,15 @@ const AddStudent = () => {
                     alert('Registered successfully')
                     navigate('/dashboard')
                 }
+                else {
+                    alert(res.data.message)
+                }
             })
     }
     return (
         <div className="container d-flex justify-content-center calc-height">
             <Form onSubmit={handleSubmit} style={{ width: "500px" }} className="mt-5">
-                <h3 className="text-center mb-3">Login</h3>
+                <h3 className="text-center mb-3">Add Student</h3>
 
                 <Form.Group className='mb-3'>
                     <Form.Label><b>Roll No</b></Form.Label>
@@ -51,4 +54,4 @@ const AddStudent = () => {
     )
 }
 
-export default AddStudent
+export default AddStudent;
