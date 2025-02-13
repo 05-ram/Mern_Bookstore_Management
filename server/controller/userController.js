@@ -31,8 +31,8 @@ const loginUser = asyncHandler(async (req, res) => {
     }
     else if (role === 'student') {
         const student = await Student.findOne({ username })
-        if (student) {
-            return res.json({ message: "Student is already registered" })
+        if (!student) {
+            return res.json({ message: "Student is not registered" })
         }
         const validPassword = await bcrypt.compare(password, student.password)
         if (!validPassword) {

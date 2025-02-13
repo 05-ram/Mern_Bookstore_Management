@@ -1,12 +1,15 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import UseContext from '../context/UseContext';
 const Login = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [role, setRole] = useState('');
     const navigate = useNavigate();
+
+    const { setSelectedRole } = useContext(UseContext);
 
     axios.defaults.withCredentials = true;
 
@@ -16,9 +19,14 @@ const Login = () => {
             .then(res => {
                 if (res.data.login && role === 'admin') {
                     navigate('/dashboard')
+                    setSelectedRole('admin')
                 }
                 else if (res.data.login && role === 'student') {
                     navigate('/')
+                    setSelectedRole('student')
+                }
+                else {
+                    alert(`${res.data.message}`);
                 }
             }
             )
@@ -51,4 +59,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Login;
