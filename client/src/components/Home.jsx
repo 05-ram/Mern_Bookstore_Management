@@ -1,6 +1,23 @@
 import storeImg from "../assets/images/store-img.jpg";
 import { motion } from 'framer-motion';
+import axios from "axios";
+import { useContext, useEffect } from "react";
+import UseContext from "../context/UseContext";
 const Home = () => {
+    const { setSelectedRole } = useContext(UseContext)
+    axios.defaults.withCredentials = true;
+    useEffect(() => {
+        axios.get('http://localhost:6003/auth/verify')
+            .then(res => {
+                if (res.data.login) {
+                    setSelectedRole(res.data.role)
+                }
+                else {
+                    setSelectedRole('')
+                }
+                console.log(res.data.role)
+            })
+    })
     return (
         <div className="d-flex justify-content-between calc-height align-items-center home-page">
             <motion.div

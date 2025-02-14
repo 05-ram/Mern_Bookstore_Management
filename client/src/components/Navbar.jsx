@@ -23,7 +23,7 @@ const NavbarComp = () => {
                 }
                 {
                     selectedRole === "" ? <NavLink to='/login' activeclassname="active">Login</NavLink>
-                        : <NavLink to='/login' activeclassname="active">Logout</NavLink>
+                        : <NavLink to='/logout' activeclassname="active">Logout</NavLink>
                 }
 
             </div>

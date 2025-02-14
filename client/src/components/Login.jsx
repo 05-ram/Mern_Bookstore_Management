@@ -18,12 +18,12 @@ const Login = () => {
         axios.post("http://localhost:6003/auth/login", { username, password, role })
             .then(res => {
                 if (res.data.login && role === 'admin') {
-                    navigate('/dashboard')
                     setSelectedRole('admin')
+                    navigate('/dashboard')
                 }
                 else if (res.data.login && role === 'student') {
-                    navigate('/')
                     setSelectedRole('student')
+                    navigate('/')
                 }
                 else {
                     alert(`${res.data.message}`);

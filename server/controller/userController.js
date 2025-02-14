@@ -51,4 +51,13 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 })
 
-module.exports = { loginUser }
+const logoutUser = asyncHandler(async (req, res) => {
+    res.clearCookie('token')
+    return res.json({ logout: true })
+})
+
+const sessionCheck = asyncHandler(async (req, res) => {
+    return res.json({ login: true, role: req.role })
+})
+
+module.exports = { loginUser, logoutUser, sessionCheck }
