@@ -15,7 +15,6 @@ const Home = () => {
                 else {
                     setSelectedRole('')
                 }
-                console.log(res.data.role)
             })
     })
     return (

@@ -16,4 +16,10 @@ const addBook = asyncHandler(async (req, res) => {
     await newBook.save();
     return res.json({ added: true })
 })
-module.exports = addBook;
+
+const getBook = asyncHandler(async (req, res) => {
+    const books = await AddBook.find()
+    return res.json({ books })
+})
+
+module.exports = { addBook, getBook };
