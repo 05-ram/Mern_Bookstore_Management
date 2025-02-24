@@ -1,11 +1,13 @@
 import { Button } from "react-bootstrap";
+import defaultImg from "../assets/images/image.jpeg"
 
 const BookCard = ({ book }) => {
     const { name, author, image } = book;
+
     return (
         <div className="book-card mb-3">
-            <img src={image} alt="" />
-            <div className="book-details text-center">
+            <img src={defaultImg} alt="" />
+            <div className="book-details text-center mt-2">
                 <h3>{name}</h3>
                 <p>{author}</p>
             </div>
