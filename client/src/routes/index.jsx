@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 import Dashboard from "../components/Dashboard";
 import AddStudent from "../components/AddStudent";
 import LogOut from "../components/LogOut";
+import AddBook from "../components/AddBook";
 
 const RouterData = () => {
     const strictRoute = createBrowserRouter([
@@ -39,6 +40,10 @@ const RouterData = () => {
                     path: '/logout',
                     element: <LogOut />,
                 },
+                {
+                    path: '/addbook',
+                    element: <AddBook />
+                }
             ]
         },
     ])

@@ -26,7 +26,7 @@ const loginUser = asyncHandler(async (req, res) => {
                 expiresIn: "1hr"
             }
         )
-        res.cookie('token', token, { httpOnly: true, secure: true, maxAge: 360000 })
+        res.cookie('token', token, { httpOnly: true, secure: true, maxAge: 3600000 })
         return res.json({ login: true, role: 'admin' })
     }
     else if (role === 'student') {
